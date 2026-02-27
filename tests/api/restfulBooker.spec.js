@@ -1,6 +1,8 @@
 const {test,expect} = require('@playwright/test');
 const APIClient = require('../../utils/apiClient');
 const AuthHelper = require('../../utils/authHelper');
+const SchemaValidator = require('../../utils/schemaValidator')
+const BookingSchema = require('../../schemas/booking.schema')
 const { createBookingPayload,updateBookingPayload } = require('../../test-data/bookingData');
 
 test.describe('Restful Booker API - Clean Framework',() =>
@@ -40,8 +42,11 @@ test.describe('Restful Booker API - Clean Framework',() =>
         const api = new APIClient(request);
         const response = await api.getBooking(bookingID);
         const body = await response.json();
-        
+        expect(response.status()).toBe(200);
         expect(body.firstname).toBe(createBookingPayload.firstname);
+
+        //Schema Validation
+        SchemaValidator.validate(body,BookingSchema);
     });
 
     test('Update Booking', async({request}) =>
