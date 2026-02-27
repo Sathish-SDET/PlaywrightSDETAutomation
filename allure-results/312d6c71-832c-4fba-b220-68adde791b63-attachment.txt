@@ -1,0 +1,3 @@
+Generated Token: c7ff57391197e40
+Status: 200
+Raw Text:{"bookingid":3920,"booking":{"firstname":"Sathish","lastname":"Shankaran","totalprice":500,"depositpaid":true,"bookingdates":{"checkin":"2026-03-01","checkout":"2026-03-05"},"additionalneeds":"Breakfast"}}

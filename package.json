@@ -1,0 +1,26 @@
+{
+  "name": "playwrightsdetautomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ui": "npx playwright test --project=ui",
+    "api": "npx playwright test --project=api",
+    "all": "npx playwright test",
+    "api:headed": "npx playwright test --project=api --headed",
+    "ui:headed": "npx playwright test --project=ui --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.2.3"
+  },
+  "dependencies": {
+    "allure-playwright": "^3.4.5",
+    "dotenv": "^17.3.1",
+    "xlsx": "^0.18.5"
+  }
+}
