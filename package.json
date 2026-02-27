@@ -8,7 +8,9 @@
     "api": "npx playwright test --project=api",
     "all": "npx playwright test",
     "api:headed": "npx playwright test --project=api --headed",
-    "ui:headed": "npx playwright test --project=ui --headed"
+    "ui:headed": "npx playwright test --project=ui --headed",
+    "smoke": "npx playwright test -g @smoke",
+    "regression": "npx playwright test -g @regression"
   },
   "keywords": [],
   "author": "",

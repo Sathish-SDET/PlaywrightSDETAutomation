@@ -25,28 +25,32 @@ test.describe('Restful Booker API - Clean Framework',() =>
         console.log('Generated Token: '+token);
     });
 
-    test('Create Booking', async({request}) => {
+    test('Create Booking @smoke', async({request}) => {
 
         const api = new APIClient(request);
+        const start = Date.now();
         const response = await api.createBooking(createBookingPayload);
+        const end = Date.now();
         console.log('Status: ' + response.status());
         console.log('Raw Text:' + await response.text());
         const body = await response.json();
         bookingID = body.bookingid;
 
+        expect(end-start).toBeLessThan(2000);       // To test performance
+        expect(response.headers()['content-type']).toContain('application/json');  // To validate headers
         expect(body.booking.firstname).toBe(createBookingPayload.firstname);
     });
 
     test('Get Booking', async ({request}) => 
     {
         const api = new APIClient(request);
-        const response = await api.getBooking(bookingID);
+        const response = await api.getBooking(bookingID,BookingSchema);
         const body = await response.json();
         expect(response.status()).toBe(200);
         expect(body.firstname).toBe(createBookingPayload.firstname);
 
-        //Schema Validation
-        SchemaValidator.validate(body,BookingSchema);
+        //Schema Validation 
+        // SchemaValidator.validate(body,BookingSchema);
     });
 
     test('Update Booking', async({request}) =>

@@ -1,3 +1,5 @@
+const SchemaValidator = require("./schemaValidator");
+
 class APIClient 
 {
     constructor(request)
@@ -22,9 +24,15 @@ class APIClient
     }
 
 // Get Booking
-    async getBooking(id)
+    async getBooking(id,schema)
     {
-        return await this.request.get(`/booking/${id}`);
+        const response = await this.request.get(`/booking/${id}`);
+        const body = await response.json();
+        if (schema)
+        {
+            SchemaValidator.validate(body,schema);
+        }
+        return response;
     }
 
 // Update Booking
