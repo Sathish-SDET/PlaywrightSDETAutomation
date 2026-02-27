@@ -1,7 +1,7 @@
 const {test,expect} = require('@playwright/test');
 const APIClient = require('../../utils/apiClient');
 const AuthHelper = require('../../utils/authHelper');
-const { createBookingPayload,updateBookingPayload } = require('../../test-data/bookingdata');
+const { createBookingPayload,updateBookingPayload } = require('../../test-data/bookingData');
 
 test.describe('Restful Booker API - Clean Framework',() =>
 {
